@@ -1,10 +1,11 @@
 import pygame
+from pygame.sprite import Sprite
 
-
-class Ship():
+class Ship(Sprite):
 
     def __init__(self, ai_settings, screen):
         """Инициализирует корабль и задает его начальную позицию."""
+        super(Ship, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
         # Загрузка изображения корабля и получение прямоугольника.
@@ -22,6 +23,9 @@ class Ship():
         self.moving_right = False
         self.moving_left = False
 
+    def center_ship(self):
+        """Размещает корабль в центре нижней стороны."""
+        self.center = self.screen_rect.centerx
 
     def update(self):
         """Обновляет позицию корабля с учетом флага."""
@@ -38,7 +42,3 @@ class Ship():
     def blitme(self):
         """Рисует корабль в текущей позиции."""
         self.screen.blit(self.image, self.rect)
-
-    def center_ship(self):
-        """Размещает корабль в центре нижней стороны."""
-        self.center = self.screen_rect.centerx
