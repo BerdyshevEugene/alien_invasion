@@ -6,7 +6,14 @@ from game_stats import GameStats
 from scoreboard import Scoreboard
 from ship import Ship
 from button import Button
+from pygame import mixer
 import game_functions as gf
+
+pygame.mixer.pre_init()
+pygame.mixer.init()
+
+
+sound_game = pygame.mixer.Sound('sounds/game_music.wav')
 
 
 def run_game():
@@ -34,6 +41,8 @@ def run_game():
         gf.check_events(ai_settings, screen, stats, sb, play_button, ship,
                             aliens, bullets)
         if stats.game_active:
+            pygame.mixer.Sound.play(sound_game)
+            mixer.Sound.set_volume(sound_game, 0.1)
             ship.update()
             gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens,
                                 bullets)

@@ -1,5 +1,12 @@
 import pygame
+from pygame import mixer
 from pygame.sprite import Sprite
+
+pygame.mixer.pre_init()
+pygame.mixer.init()
+
+
+sound_shot = pygame.mixer.Sound('sounds/laser_shot.mp3')
 
 
 class Bullet (Sprite):
@@ -31,4 +38,6 @@ class Bullet (Sprite):
 
     def draw_bullet(self):
         """Вывод пули на экран."""
+        pygame.mixer.Sound.play(sound_shot)
+        mixer.Sound.set_volume(sound_shot, 0.2)
         pygame.draw.rect(self.screen, self.color, self.rect)

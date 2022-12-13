@@ -21,6 +21,7 @@ class Settings():
         # Темп ускорения игры
         self.speedup_scale = 1.1
         self.score_scale = 1.5
+        self.music_volume = 1.5
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
